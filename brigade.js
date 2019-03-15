@@ -32,7 +32,7 @@ class JobFactory {
 
   createTestJob(e, project) {
     // TODO: If not "node", specify alternative docker container for your build
-    var Test = new Job("Test", "node:10.15.0-slim")
+    var Test = new Job("test", "node:10.15.0-slim")
     Test.storage.enabled = true
 
     Test.tasks = [
