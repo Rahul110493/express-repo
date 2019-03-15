@@ -1,6 +1,7 @@
 const { events, Job ,Group } = require("brigadier");
 
 
+
 class JobFactory {
   nodebuildPipelineJob(e, project) {
     var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
