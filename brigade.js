@@ -17,9 +17,9 @@ class JobFactory {
       "git config --global credential.helper 'store --file ~/.git-credentials",
       `echo https://${project.secrets.user}:${project.secrets.pwd}@github.com/Rahul110493 > ~/.git-credentials`,
       "git fetch --tags -q",
-      "./gitversion --prefix d bump auto && ./gitversion --prefix d show > /mnt/brigade/share/pipeline_app_version.txt",
+      "./gitversion --prefix d bump auto && ./gitversion --prefix d show ",
       "echo Cheching the mnt",
-      "cat /mnt/brigade/share/pipeline_app_version.txt",
+//      "cat /mnt/brigade/share/pipeline_app_version.txt",
       "git push --tags >/dev/null 2>&1",     
       "npm install",
       "npm start",
@@ -36,7 +36,7 @@ class JobFactory {
     Test.storage.enabled = true
 
     Test.tasks = [
-      "cat /mnt/brigade/share/pipeline_app_version.txt"
+//      "cat /mnt/brigade/share/pipeline_app_version.txt"
     ]
 
     return Test;
