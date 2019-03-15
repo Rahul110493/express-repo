@@ -54,7 +54,7 @@ class JobFactory {
       if (jsonPayload.ref == "refs/heads/develop") {
         Group.runEach([
           jobFactory.nodebuildPipelineJob(e, project),
-          jobFactory.createTestJob(e, project),
+//          jobFactory.createTestJob(e, project),
 
         ])
       } else if (jsonPayload.ref == "refs/heads/master") {
