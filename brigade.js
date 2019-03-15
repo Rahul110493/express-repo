@@ -1,4 +1,4 @@
-const { events, Job ,Group} = require("brigadier");
+const { events, Job ,Group } = require("brigadier");
 
 
 
@@ -7,9 +7,7 @@ class JobFactory {
     var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
     nodebuild.storage.enabled = true
 
-    let timestamp = new Date().getTime()
-    let taskFactory = new DeployTaskFactory(project.secrets.team_name, e, project)
-    let uniqueDatabase = `${project.secrets.unittest_mongo_db}-${timestamp}`
+   
     nodebuild.tasks = [
       "cd /src/",
       "pwd",
