@@ -8,7 +8,7 @@ class JobFactory {
   nodebuildPipelineJob(e, project)
      {
        var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
-       buildcloud.env.PRIVATE_KEY=project.secrets.private_key
+       buildcloud.env.PRIVATE_KEY = project.secrets.private_key
 
        buildcloud.tasks = [
         "cd /src",
