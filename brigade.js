@@ -14,7 +14,7 @@ class JobFactory {
         "cd /src",
 //        `echo -e '{"type": "${project.secrets.type}","project_id": "${project.secrets.project_id}","private_key_id": "${project.secrets.private_key_id}","private_key": "${project.secrets.private_key}","client_email": "${project.secrets.client_email}","client_id": "${project.secrets.client_id}","auth_uri": "${project.secrets.auth_uri}","token_uri": "${project.secrets.token_uri}","auth_provider_x509_cert_url": "${project.secrets.auth_provider_x509_cert_url}","client_x509_cert_url": "${project.secrets.client_x509_cert_url}"}' > file.json`,
         "ls -lart",
-        `echo  '"${project.secrets.private_key}"'`,
+        `echo  '"${project.secrets.test_var}"'`,
 //        "cat file.json",
 //        "echo  $PRIVATE_KEY"
         // `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
