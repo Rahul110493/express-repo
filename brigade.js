@@ -16,7 +16,7 @@ class JobFactory {
         "ls -lart",
 //        `echo -e '"${project.secrets.private_key}"'`,
 //        "cat file.json",
-        "echo $PRIVATE_KEY"
+        "echo -e $PRIVATE_KEY"
         // `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
         // `gcloud config set project ${project.secrets.project_id}`,
         // "curl -L https://dl.k8s.io/v1.10.6/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl",
