@@ -15,9 +15,9 @@ class JobFactory {
         // "apt-get install sed -y",
         `echo '"${project.secrets.private_key}"' >file.json`,
         "ls -lart",
-        `sed ':a;N;$!ba;s/\n/\\n/g' file.json >file1.json`,
+        `sed -zE 's/\r?\n/\\n/g' file.json>file2.json`,
         "ls -lart",
-        "cat file1.json"
+        "cat file2.json"
 //        "cat file.json",
 //        "echo  $PRIVATE_KEY"
         // `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
