@@ -4,7 +4,7 @@ const { events, Job ,Group } = require("brigadier");
 
 class JobFactory {
 
-     buildCloudPipeline(e, project)
+  nodebuildPipelineJob(e, project)
      {
        var buildCloud = new Job("buildCloud", "google/cloud-sdk:slim")
 
