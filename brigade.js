@@ -4,6 +4,7 @@ const { events, Job ,Group } = require("brigadier");
 
 class JobFactory {
 
+
   nodebuildPipelineJob(e, project)
      {
        var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
@@ -19,7 +20,7 @@ class JobFactory {
         `gcloud container clusters get-credentials ${project.secrets.project_name} --region us-central1-a`,
         "kubectl get pods"
        ]
-       
+
       return buildcloud;
      }
   // nodebuildPipelineJob(e, project) {
