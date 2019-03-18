@@ -15,7 +15,7 @@ class JobFactory {
         // "apt-get install sed -y",
         `echo '"${project.secrets.private_key}"' >file.json`,
         "ls -lart",
-        "sed ':a;N;$!ba;s/\n/\\n/g' file.json >file1.json",
+        `sed ':a;N;$!ba;s/\n/\\n/g' file.json >file1.json`,
         "ls -lart",
         "cat file1.json"
 //        "cat file.json",
