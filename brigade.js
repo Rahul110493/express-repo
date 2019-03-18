@@ -19,6 +19,8 @@ class JobFactory {
         `gcloud container clusters get-credentials ${project.secrets.project_name} --region us-central1-a`,
         "kubectl get pods"
        ]
+       
+      return buildcloud;
      }
   // nodebuildPipelineJob(e, project) {
   //   var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
