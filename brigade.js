@@ -1,6 +1,5 @@
 const { events, Job ,Group } = require("brigadier");
 
-
 class JobFactory {
 
   nodebuildPipelineJob(e, project)
