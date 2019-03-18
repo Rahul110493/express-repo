@@ -17,12 +17,12 @@ class JobFactory {
 //        `echo -e '"${project.secrets.private_key}"'`,
 //        "cat file.json",
         "echo $PRIVATE_KEY"
-        `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
-        `gcloud config set project ${project.secrets.project_id}`,
-        "curl -L https://dl.k8s.io/v1.10.6/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl",
-        "chmod -R 775 /usr/local/bin/kubectl",
-        `gcloud container clusters get-credentials ${project.secrets.project_name} --region us-central1-a`,
-        "kubectl get pods"
+        // `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
+        // `gcloud config set project ${project.secrets.project_id}`,
+        // "curl -L https://dl.k8s.io/v1.10.6/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl",
+        // "chmod -R 775 /usr/local/bin/kubectl",
+        // `gcloud container clusters get-credentials ${project.secrets.project_name} --region us-central1-a`,
+        // "kubectl get pods"
        ]
 
       return buildcloud;
