@@ -7,16 +7,12 @@ class JobFactory {
        var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
 //       buildcloud.env.PRIVATE_KEY = project.secrets.private_key
 //         buildcloud.env.TEST_NAME = project.secrets.test_name
-
+    //  To Replace new line with escape character \n
        buildcloud.tasks = [
         "cd /src",
 //        `echo -e '{"type": "${project.secrets.type}","project_id": "${project.secrets.project_id}","private_key_id": "${project.secrets.private_key_id}","private_key": "${project.secrets.private_key}","client_email": "${project.secrets.client_email}","client_id": "${project.secrets.client_id}","auth_uri": "${project.secrets.auth_uri}","token_uri": "${project.secrets.token_uri}","auth_provider_x509_cert_url": "${project.secrets.auth_provider_x509_cert_url}","client_x509_cert_url": "${project.secrets.client_x509_cert_url}"}' > file.json`,
-        // "apt-get update",
-        // "apt-get install sed -y",
-        `echo '"${project.secrets.test_name}"' >file.json`,
+        `echo '"${project.secrets.private_key}"' >file.json`,
         "ls -lart",
-        "cat file.json",
-        "sed 's/?/8/g' file.json",
         "cat file.json",
         `sed -zE 's/\n/\\n/g' file.json>file2.json`,
         "ls -lart",
@@ -33,6 +29,8 @@ class JobFactory {
 
       return buildcloud;
      }
+  
+  //Job to push new tags to gcr  
   // nodebuildPipelineJob(e, project) {
   //   var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
   //   nodebuild.storage.enabled = true
@@ -50,6 +48,7 @@ class JobFactory {
   //     "./gitversion --prefix d bump auto && ./gitversion --prefix d show ",
   //     "echo Cheching the mnt",
   //     "git push --tags >/dev/null 2>&1",
+  //      docker login -u _json_key --password-stdin https://gcr.io < file.json
   //     "npm install",
   //     "npm start",
 
