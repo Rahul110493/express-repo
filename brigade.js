@@ -15,11 +15,12 @@ class JobFactory {
         // "apt-get install sed -y",
         `echo '"${project.secrets.test_name}"' >file.json`,
         "ls -lart",
-        "sed 's/?/\n/g' file.json",
+        "cat file.json",
+        "sed 's/?/8/g' file.json",
         "cat file.json",
         `sed -zE 's/\n/\\n/g' file.json>file2.json`,
         "ls -lart",
-        "cat file2.json"
+        "cat file2.json",
 //        "cat file.json",
 //        "echo  $PRIVATE_KEY"
         // `gcloud auth activate-service-account ${project.secrets.client_email} --key-file=file.json`,
