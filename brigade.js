@@ -6,7 +6,6 @@ class JobFactory {
     var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
     buildcloud.storage.enabled = true
     
-    
     //   port: 9000,
     //   image: {
     //     tag: "${APP_VER}",
@@ -27,7 +26,7 @@ class JobFactory {
       // "echo $PRIVATE_KEY"
       //         `echo '"${project.secrets.private_key}"' >file.json`,
       //         "ls -lart",
-              "cat /data/share/file.json",
+              "cat /mnt/brigade/file.json",
       //         `sed -zE 's/\n/\\n/g' file.json>file2.json`,
       //         "ls -lart",
       //         "cat file2.json",
