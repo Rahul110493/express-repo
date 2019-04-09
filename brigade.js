@@ -7,7 +7,7 @@ class JobFactory {
     buildcloud.storage.enabled = true
     
     
-//   port: 9000,
+    //   port: 9000,
     //   image: {
     //     tag: "${APP_VER}",
     //     repository: `${project.secrets.app_container_reg}/${project.secrets.app_name}`
