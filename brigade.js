@@ -5,8 +5,7 @@ class JobFactory {
   nodebuildPipelineJob(e, project) {
     var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
     buildcloud.storage.enabled = true
-
-    // let values = {
+    
     //   port: 9000,
     //   image: {
     //     tag: "${APP_VER}",
