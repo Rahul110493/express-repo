@@ -3,7 +3,7 @@ const { events, Job, Group } = require("brigadier");
 class JobFactory {
   
 
-  nodebuildPipelineJob(e, project) {
+  buildcloudPipelineJob(e, project) {
     var buildcloud = new Job("buildcloud", "google/cloud-sdk:slim")
     buildcloud.storage.enabled = true
     
@@ -22,13 +22,14 @@ class JobFactory {
 
       // "cd /src",
       // "mkdir extra && cd extra",
+      "echo hello > /mnt/brigade/share/hello.txt",
       //`echo '{"type": "${project.secrets.type}","project_id": "${project.secrets.project_id}","private_key_id": "${project.secrets.private_key_id}","private_key": "${project.secrets.private_key}","client_email": "${project.secrets.client_email}","client_id": "${project.secrets.client_id}","auth_uri": "${project.secrets.auth_uri}","token_uri": "${project.secrets.token_uri}","auth_provider_x509_cert_url": "${project.secrets.auth_provider_x509_cert_url}","client_x509_cert_url": "${project.secrets.client_x509_cert_url}"}' > file.json`,
         // `echo ${project.secrets.type} > /date/share/data.txt`,
      // "cat file.json"
       // "echo $PRIVATE_KEY"
       //         `echo '"${project.secrets.private_key}"' >file.json`,
       //         "ls -lart",
-              "cat /mnt/brigade/file.json",
+              // "cat /mnt/brigade/file.json",
       //         `sed -zE 's/\n/\\n/g' file.json>file2.json`,
       //         "ls -lart",
       //         "cat file2.json",
@@ -46,13 +47,14 @@ class JobFactory {
   }
 
   //Job to push new tags to gcr  
-  // nodebuildPipelineJob(e, project) {
-  //   var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
-  //   nodebuild.storage.enabled = true
+  nodebuildPipelineJob(e, project) {
+    var nodebuild = new Job("nodebuild", "node:10.15.0-slim")
+    nodebuild.storage.enabled = true
 
 
-  //   nodebuild.tasks = [
+    nodebuild.tasks = [
   //     "cd /src/",
+        "echo World >>/mnt/brigade/share/hello.txt",
   //     "pwd",
   //     "apt-get update && apt-get --assume-yes install git-core",
   //     "git config --global user.email 'dandevops@az.devops.gdpdentsu.net'",
@@ -68,22 +70,22 @@ class JobFactory {
   //     "npm start",
 
 
-  //   ]
+    ]
 
-  //   return nodebuild;
-  // }
+    return nodebuild;
+  }
 
-  //   createTestJob(e, project) {
+    createTestJob(e, project) {
   //    TODO: If not "node", specify alternative docker container for your build
-  //     var Test = new Job("test", "node:10.15.0-slim")
-  //     Test.storage.enabled = true
+      var Test = new Job("test", "node:10.15.0-slim")
+      Test.storage.enabled = true
 
-  //     Test.tasks = [
-  //     "cat /mnt/brigade/share/pipeline_app_version.txt"
-  //     ]
+      Test.tasks = [
+      "cat /mnt/brigade/share/hello.txt",
+      ]
 
-  //     return Test;
-  //   }
+      return Test;
+    }
 }
 
 
@@ -97,8 +99,9 @@ events.on("push", (e, project) => {
   if (e.type == 'push') {
     if (jsonPayload.ref == "refs/heads/develop") {
       Group.runEach([
+        jobFactory.buildcloudPipelineJob(e,project),
         jobFactory.nodebuildPipelineJob(e, project),
-        //          jobFactory.createTestJob(e, project),
+        jobFactory.createTestJob(e, project),
 
       ])
     } else if (jsonPayload.ref == "refs/heads/master") {
